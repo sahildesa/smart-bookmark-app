@@ -1,12 +1,14 @@
 'use client'
-export const dynamic = 'force-dynamic'
-
-import { supabase } from '@/lib/supabase'
+import { useEffect } from 'react'
+import { supabase } from '@/lib/supabase/client'
 
 export default function Login() {
 
-  const signIn = async () => {
+  useEffect(() => {
     if (!supabase) return
+  }, [])
+
+  const signIn = async () => {
     await supabase.auth.signInWithOAuth({
       provider: 'google'
     })
